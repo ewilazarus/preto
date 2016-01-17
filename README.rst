@@ -10,20 +10,20 @@ Examples
 
 * C:
 
-.. image: c_screenshot.png
+.. image:: c_screenshot.png
 
 
 * Python:
 
-.. image: python_screenshot.png
+.. image:: python_screenshot.png
 
 * Clojure:
 
-.. image: clojure_screenshot.png
+.. image:: clojure_screenshot.png
 
 * Clojure (with Rainbow Parenthesis):
 
-.. image: clojure_rp_screenshot.png
+.. image:: clojure_rp_screenshot.png
 
 
 .. _`badwolf`: https://github.com/sjl/badwolf/
