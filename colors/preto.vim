@@ -1,4 +1,4 @@
-" preto: a minimal dark theme for 256 color terminals
+" preto: a minimal dark theme for VIM (256 color terminals).
 
 set background=dark
 highlight clear
