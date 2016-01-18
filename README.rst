@@ -1,5 +1,4 @@
 .. image:: images/mtg_black.png
-   :align: middle
 
 |
 | **Preto**: A minimal dark color scheme for VIM (256 color terminals).
