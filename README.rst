@@ -4,34 +4,38 @@ Preto
 .. image:: images/exterminadorfuturo.jpg
 
 |
-| A minimal dark color scheme for VIM.
-
-Inspired by `badwolf`_ and `256_noir`_.
+| A minimal dark color scheme for VIM, inspired by `badwolf`_ and `256_noir`_.
 
 Examples
---------
+========
 
-* C:
+C:
+--
 
 .. image:: images/c_screenshot.png
 
-* Python:
+Python:
+------
 
 .. image:: images/python_screenshot.png
 
-* Clojure:
+Clojure:
+-------
 
 .. image:: images/clojure_screenshot.png
 
-* Clojure (with Rainbow Parentheses):
+Clojure (with Rainbow Parentheses):
+----------------------------------
 
 .. image:: images/clojure_rp_screenshot.png
 
-* HTML:
+HTML:
+----
 
 .. image:: images/html_screenshot.png
 
-* CSS:
+CSS:
+---
 
 .. image:: images/css_screenshot.png
 
