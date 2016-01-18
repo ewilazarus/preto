@@ -1,6 +1,8 @@
 Preto
 =====
 
+.. image:: images/mtg_black.png
+
 A minimal dark color scheme for VIM (256 color terminals).
 
 Inspired by `badwolf`_ and `256_noir`_.
