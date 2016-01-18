@@ -1,7 +1,10 @@
-.. image:: images/mtg_black.png
+Preto
+======
+
+.. image:: images/exterminadorfuturo.jpg
 
 |
-| **Preto**: A minimal dark color scheme for VIM (256 color terminals).
+| A minimal dark color scheme for VIM (256 color terminals).
 
 Inspired by `badwolf`_ and `256_noir`_.
 
