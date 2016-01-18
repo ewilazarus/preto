@@ -4,7 +4,7 @@ Preto
 .. image:: images/exterminadorfuturo.jpg
 
 |
-| A minimal dark color scheme for VIM (256 color terminals).
+| A minimal dark color scheme for VIM.
 
 Inspired by `badwolf`_ and `256_noir`_.
 
