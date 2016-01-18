@@ -1,4 +1,13 @@
-" preto: a minimal dark theme for VIM (256 color terminals).
+" vim:fdm=marker:foldlevel=0
+"  ____           _        
+" |  _ \ _ __ ___| |_ ___  
+" | |_) | '__/ _ \ __/ _ \ 
+" |  __/| | |  __/ || (_) |
+" |_|   |_|  \___|\__\___/ 
+"                          
+" A minimal dark theme for VIM 
+
+" Reset -------------------------------------------------------------------{{{1
 
 set background=dark
 highlight clear
@@ -7,120 +16,188 @@ if exists("syntax_on")
 endif
 let g:colors_name = "preto"
 
+
+" Palette ---------------------------------------------------------------- {{{1
+
+let s:palette = {}
+
+let s:palette.black  = [16 , "#000000"]
+let s:palette.gray01 = [232, "#080808"]
+let s:palette.gray02 = [233, "#121212"]
+let s:palette.gray03 = [234, "#1c1c1c"]
+let s:palette.gray04 = [235, "#262626"]
+let s:palette.gray05 = [236, "#303030"]
+let s:palette.gray06 = [237, "#3a3a3a"]
+let s:palette.gray07 = [238, "#444444"]
+let s:palette.gray08 = [239, "#4e4e4e"]
+let s:palette.gray09 = [240, "#585858"]
+let s:palette.gray10 = [241, "#606060"]
+let s:palette.gray11 = [242, "#666666"]
+let s:palette.gray12 = [243, "#767676"]
+let s:palette.gray13 = [244, "#808080"]
+let s:palette.gray14 = [245, "#8a8a8a"]
+let s:palette.gray15 = [246, "#949494"]
+let s:palette.gray16 = [247, "#9e9e9e"]
+let s:palette.gray17 = [248, "#a8a8a8"]
+let s:palette.gray18 = [249, "#b2b2b2"]
+let s:palette.gray19 = [250, "#bcbcbc"]
+let s:palette.gray20 = [251, "#c6c6c6"]
+let s:palette.gray21 = [252, "#d0d0d0"]
+let s:palette.gray22 = [253, "#dadada"]
+let s:palette.gray23 = [254, "#e4e4e4"]
+let s:palette.white  = [255, "#eeeeee"]
+
+let s:palette.blue   = [33 , "#0087ff"]
+let s:palette.green  = [42 , "#00d787"]
+let s:palette.red    = [124, "#af0000"]
+let s:palette.purple = [129, "#af00ff"]
+let s:palette.brown  = [130, "#af5f00"]
+let s:palette.orange = [166, "#d75f00"]
+let s:palette.yellow = [228, "#ffff87"]
+
+
+" Utilities -------------------------------------------------------------- {{{1
+
+function! s:HL(item, fgColor, bgColor, style)
+	let target = 'cterm'
+	let pindex = 0
+	if has('gui_running')
+		let target = 'gui'
+		let pindex = 1
+	end
+
+	let command  = 'hi ' . a:item
+	let command .= ' ' . target . 'fg=' . a:fgColor[pindex]
+	let command .= ' ' . target . 'bg=' . a:bgColor[pindex]
+	let command .= ' ' . target . '=' . a:style
+
+	execute command
+endfunction
+
+
+" Composition ------------------------------------------------------------ {{{1
+
 " PRIMITIVES
-hi Boolean         ctermbg=16    ctermfg=240	cterm=bold
-hi Character       ctermbg=16    ctermfg=240	cterm=bold
-hi Constant        ctermbg=16    ctermfg=240	cterm=bold
-hi Float           ctermbg=16    ctermfg=240	cterm=bold
-hi Number          ctermbg=16    ctermfg=240	cterm=bold
-hi String          ctermbg=16    ctermfg=243	cterm=none
-hi SpecialChar     ctermbg=16    ctermfg=255	cterm=none
+call s:HL('Boolean'		  , s:palette.gray09, s:palette.black , 'bold'	   )
+call s:HL('Character'	  , s:palette.gray09, s:palette.black , 'bold'	   )
+call s:HL('Constant'	  , s:palette.gray09, s:palette.black , 'bold'	   )
+call s:HL('Float'		  , s:palette.gray09, s:palette.black , 'bold'	   )
+call s:HL('Number'		  , s:palette.gray09, s:palette.black , 'bold'	   )
+call s:HL('String'		  , s:palette.gray12, s:palette.black , 'none'	   )
+call s:HL('SpecialChar'	  , s:palette.white , s:palette.black , 'none'	   )
 
 " COMMENTS
-hi Comment         ctermbg=16    ctermfg=236	cterm=none
-hi SpecialComment  ctermbg=16    ctermfg=240	cterm=none
-hi Title           ctermbg=16    ctermfg=240	cterm=none
-hi Todo            ctermbg=16    ctermfg=129	cterm=bold
+call s:HL('Comment'		  , s:palette.gray05, s:palette.black , 'none'	   )
+call s:HL('SpecialComment', s:palette.gray09, s:palette.black , 'none'	   )
+call s:HL('Title'		  , s:palette.gray09, s:palette.black , 'none'	   )
+call s:HL('Todo'		  , s:palette.purple, s:palette.black , 'bold'	   )
 
-" LINE, COLUMN
-hi LineNr          ctermbg=16    ctermfg=237	cterm=bold
-hi CursorLine	   ctermbg=234   ctermfg=255	cterm=none
-hi CursorLineNr	   ctermbg=16	 ctermfg=240	cterm=bold
+" LINES, COLUMNS
+call s:HL('LineNr'		  , s:palette.gray06, s:palette.black , 'bold'	   )
+call s:HL('CursorLine'	  , s:palette.white , s:palette.gray03, 'none'	   )
+call s:HL('CursorLineNr'  , s:palette.gray09, s:palette.black , 'bold'	   )
 
-hi ColorColumn     ctermbg=234   ctermfg=255	cterm=none
-hi CursorColumn    ctermbg=234   ctermfg=247	cterm=none
+call s:HL('ColorColumn'	  , s:palette.white , s:palette.gray03, 'none'	   )
+call s:HL('CursorColumn'  , s:palette.gray16, s:palette.gray03, 'none'	   )
 
 " VISUAL MODE
-hi Visual          ctermbg=237   ctermfg=42		cterm=none
-hi VisualNOS       ctermbg=237   ctermfg=42		cterm=none
+call s:HL('Visual'		  , s:palette.green , s:palette.gray06, 'none'	   )
+call s:HL('VisualNOS'	  , s:palette.green , s:palette.gray06, 'none'	   )
 
 " SEARCH
-hi Search          ctermbg=228   ctermfg=16		cterm=bold
-hi IncSearch       ctermbg=16    ctermfg=228	cterm=bold
+call s:HL('Search'		  , s:palette.black , s:palette.yellow, 'bold'	   )
+call s:HL('IncSearch'	  , s:palette.yellow, s:palette.black , 'bold'	   )
 
 " SPELLING
-hi SpellBad        ctermbg=124   ctermfg=255	cterm=bold
-hi SpellCap        ctermbg=124   ctermfg=255	cterm=bold
-hi SpellLocal      ctermbg=124   ctermfg=255	cterm=bold
-hi SpellRare       ctermbg=124   ctermfg=255	cterm=bold
+call s:HL('SpellBad'	  , s:palette.white , s:palette.red	  , 'bold'	   )
+call s:HL('SpellCap'	  , s:palette.white , s:palette.red	  , 'bold'	   )
+call s:HL('SpellLocal'	  , s:palette.white , s:palette.red	  , 'bold'	   )
+call s:HL('SpellRare'	  , s:palette.white , s:palette.red	  , 'bold'	   )
 
 " ERROR
-hi Error           ctermbg=16    ctermfg=124	cterm=bold
+call s:HL('Error'		  , s:palette.red	, s:palette.black , 'bold'	   )
 
 " COMMAND MODE MESSAGES
-hi ErrorMsg        ctermbg=16    ctermfg=124	cterm=none
-hi WarningMsg 	   ctermbg=16	 ctermfg=130	cterm=none
-hi ModeMsg         ctermbg=16    ctermfg=255	cterm=none
-hi MoreMsg         ctermbg=16    ctermfg=255	cterm=none
+call s:HL('ErrorMsg'	  , s:palette.red	, s:palette.black , 'bold'	   )
+call s:HL('WarningMsg'	  , s:palette.brown	, s:palette.black , 'bold'	   )
+call s:HL('ModeMsg'		  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('MoreMsg'		  , s:palette.white	, s:palette.black , 'bold'	   )
 
 " PREPROCESSOR DIRECTIVES
-hi Include         ctermbg=16    ctermfg=255	cterm=bold
-hi Define          ctermbg=16    ctermfg=255	cterm=bold
-hi Macro           ctermbg=16    ctermfg=255	cterm=bold
-hi PreCondit       ctermbg=16    ctermfg=255	cterm=bold
-hi PreProc         ctermbg=16    ctermfg=255	cterm=bold
+call s:HL('Include'		  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('Define'		  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('Macro'		  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('PreCondit'	  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('PreProc'		  , s:palette.white	, s:palette.black , 'bold'	   )
 
 " BINDINGS
-hi Identifier	   ctermbg=16	 ctermfg=255    cterm=bold
-hi Funciton		   ctermbg=16    ctermfg=255	cterm=bold
-hi Keyword         ctermbg=16    ctermfg=255	cterm=bold
-hi Operator        ctermbg=16    ctermfg=255	cterm=bold
+call s:HL('Identifier'	  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('Function'	  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('Keyword'		  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('Operator'	  , s:palette.white	, s:palette.black , 'bold'	   )
 
 " TYPES
-hi Type            ctermbg=16    ctermfg=255	cterm=bold
-hi Typedef         ctermbg=16    ctermfg=255	cterm=bold
-hi StorageClass    ctermbg=16    ctermfg=255	cterm=bold
-hi Structure       ctermbg=16    ctermfg=255	cterm=bold
+call s:HL('Type'		  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('Typedef'	  	  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('StorageClass'  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('Structure'	  , s:palette.white	, s:palette.black , 'bold'	   )
 
 " FLOW CONTROL
-hi Statement	   ctermbg=16	 ctermfg=255	cterm=bold
-hi Conditional	   ctermbg=16	 ctermfg=255	cterm=bold
-hi Repeat          ctermbg=16    ctermfg=255	cterm=bold
-hi Label		   ctermbg=16	 ctermfg=255	cterm=bold
-hi Exception       ctermbg=16    ctermfg=255	cterm=bold
+call s:HL('Statement'	  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('Conditional'	  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('Repeat'		  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('Label'		  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('Exception'	  , s:palette.white	, s:palette.black , 'bold'	   )
 
 " MISC
-hi Normal          ctermbg=16    ctermfg=250	cterm=none
-hi Cursor          ctermbg=255   ctermfg=16		cterm=none
-hi Underlined	   ctermbg=16	 ctermfg=243	cterm=underline
-hi SpecialKey      ctermbg=16    ctermfg=228	cterm=none
+call s:HL('Normal'		  , s:palette.gray19, s:palette.black , 'none'	   )
+call s:HL('Cursor'		  , s:palette.white , s:palette.black , 'none'	   )
+call s:HL('Underlined'	  , s:palette.gray12, s:palette.black , 'underline')
+call s:HL('SpecialKey'	  , s:palette.yellow, s:palette.black , 'none'	   )
 
 " FOLD
-hi FoldColumn      ctermbg=16    ctermfg=236	cterm=none
-hi Folded          ctermbg=16    ctermfg=236	cterm=none
+call s:HL('FoldColumn'	  , s:palette.gray05, s:palette.black , 'none'	   )
+call s:HL('Folded'		  , s:palette.gray05, s:palette.black , 'none'	   )
 
 " PARENTHESIS
-hi MatchParen      ctermbg=16    ctermfg=166	cterm=bold
+call s:HL('MatchParen'	  , s:palette.orange, s:palette.black , 'bold'	   )
 
-" TODO: POPUP
-hi Pmenu           ctermbg=240   ctermfg=255	cterm=none
-hi PmenuSbar       ctermbg=250   ctermfg=16		cterm=none
-hi PmenuSel        ctermbg=250   ctermfg=16		cterm=none
-hi PmenuThumb      ctermbg=240   ctermfg=232	cterm=none
+" POPUP
+call s:HL('Pmenu'		  , s:palette.white , s:palette.gray09, 'none'	   )
+call s:HL('PmenuSbar'	  , s:palette.black , s:palette.gray19, 'none'	   )
+call s:HL('PmenuSel'	  , s:palette.black , s:palette.gray19, 'none'	   )
+call s:HL('PmenuThumb'	  , s:palette.gray01, s:palette.gray09, 'none'	   )
 
 " SPLITS
-hi VertSplit       ctermbg=250   ctermfg=16		cterm=none
+call s:HL('VertSplit'	  , s:palette.gray19, s:palette.black , 'none'	   )
+
+" OTHERS
+call s:HL('Debug'		  , s:palette.white	, s:palette.black , 'none'	   )
+call s:HL('Delimiter'  	  , s:palette.white	, s:palette.black , 'none'	   )
+call s:HL('Directory'  	  , s:palette.white	, s:palette.black , 'none'	   )
+call s:HL('NonText'		  , s:palette.white	, s:palette.black , 'none'	   )
+call s:HL('Question'   	  , s:palette.white	, s:palette.black , 'none'	   )
+call s:HL('Special'		  , s:palette.white	, s:palette.black , 'none'	   )
+call s:HL('StatusLine' 	  , s:palette.white	, s:palette.black , 'none'	   )
+call s:HL('StatusLineNC'  , s:palette.white	, s:palette.black , 'none'	   )
+call s:HL('Tag'			  , s:palette.white	, s:palette.black , 'none'	   )
+call s:HL('WildMenu'   	  , s:palette.white	, s:palette.black , 'none'	   )
 
 " DIFF
-hi DiffAdd         ctermbg=22    ctermfg=255	cterm=none
-hi DiffChange      ctermbg=234	 ctermfg=255	cterm=none
-hi DiffDelete      ctermbg=16    ctermfg=255	cterm=none
-hi DiffText        ctermbg=33	 ctermfg=250	cterm=none
+call s:HL('DiffAdd'		  , s:palette.white , s:palette.green , 'none'	   )
+call s:HL('DiffChange'	  , s:palette.white , s:palette.blue  , 'none'	   )
+call s:HL('DiffDelete'	  , s:palette.white , s:palette.red   , 'none'	   )
+call s:HL('DiffText'	  , s:palette.gray09, s:palette.black , 'none'	   )
+
+
+" Links ------------------------------------------------------------------ {{{1
 
 hi def link diffAdded            DiffAdd
 hi def link diffChanged          DiffChange
 hi def link diffCommon           Statement
 hi def link diffRemoved          DiffDelete
 
-" OTHERS
-hi Debug           ctermbg=16    ctermfg=255	cterm=none
-hi Delimiter       ctermbg=16    ctermfg=255	cterm=none
-hi Directory       ctermbg=16    ctermfg=255	cterm=none
-hi NonText         ctermbg=16    ctermfg=255	cterm=none
-hi Question        ctermbg=16    ctermfg=255	cterm=none
-hi Special         ctermbg=16    ctermfg=255	cterm=none
-hi StatusLine      ctermbg=16 	 ctermfg=255	cterm=none
-hi StatusLineNC    ctermbg=16    ctermfg=255	cterm=none
-hi Tag             ctermbg=16    ctermfg=255	cterm=none
-hi WildMenu        ctermbg=16    ctermfg=255	cterm=none
 
+" Filetype Specific ------------------------------------------------------ {{{1
+
+" TODO
