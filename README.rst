@@ -20,7 +20,7 @@ Examples
 
 .. image:: images/clojure_screenshot.png
 
-* Clojure (with Rainbow Parenthesis):
+* Clojure (with Rainbow Parentheses):
 
 .. image:: images/clojure_rp_screenshot.png
 

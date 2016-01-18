@@ -21,39 +21,46 @@ let g:colors_name = "preto"
 
 let s:palette = {}
 
-let s:palette.black  = [16 , "#000000"]
-let s:palette.gray01 = [232, "#080808"]
-let s:palette.gray02 = [233, "#121212"]
-let s:palette.gray03 = [234, "#1c1c1c"]
-let s:palette.gray04 = [235, "#262626"]
-let s:palette.gray05 = [236, "#303030"]
-let s:palette.gray06 = [237, "#3a3a3a"]
-let s:palette.gray07 = [238, "#444444"]
-let s:palette.gray08 = [239, "#4e4e4e"]
-let s:palette.gray09 = [240, "#585858"]
-let s:palette.gray10 = [241, "#606060"]
-let s:palette.gray11 = [242, "#666666"]
-let s:palette.gray12 = [243, "#767676"]
-let s:palette.gray13 = [244, "#808080"]
-let s:palette.gray14 = [245, "#8a8a8a"]
-let s:palette.gray15 = [246, "#949494"]
-let s:palette.gray16 = [247, "#9e9e9e"]
-let s:palette.gray17 = [248, "#a8a8a8"]
-let s:palette.gray18 = [249, "#b2b2b2"]
-let s:palette.gray19 = [250, "#bcbcbc"]
-let s:palette.gray20 = [251, "#c6c6c6"]
-let s:palette.gray21 = [252, "#d0d0d0"]
-let s:palette.gray22 = [253, "#dadada"]
-let s:palette.gray23 = [254, "#e4e4e4"]
-let s:palette.white  = [255, "#eeeeee"]
+let s:palette.black  	 = [16 , "#000000"]
+let s:palette.gray01 	 = [232, "#080808"]
+let s:palette.gray02 	 = [233, "#121212"]
+let s:palette.gray03 	 = [234, "#1c1c1c"]
+let s:palette.gray04 	 = [235, "#262626"]
+let s:palette.gray05 	 = [236, "#303030"]
+let s:palette.gray06 	 = [237, "#3a3a3a"]
+let s:palette.gray07 	 = [238, "#444444"]
+let s:palette.gray08 	 = [239, "#4e4e4e"]
+let s:palette.gray09 	 = [240, "#585858"]
+let s:palette.gray10 	 = [241, "#606060"]
+let s:palette.gray11 	 = [242, "#666666"]
+let s:palette.gray12 	 = [243, "#767676"]
+let s:palette.gray13 	 = [244, "#808080"]
+let s:palette.gray14 	 = [245, "#8a8a8a"]
+let s:palette.gray15 	 = [246, "#949494"]
+let s:palette.gray16 	 = [247, "#9e9e9e"]
+let s:palette.gray17 	 = [248, "#a8a8a8"]
+let s:palette.gray18 	 = [249, "#b2b2b2"]
+let s:palette.gray19 	 = [250, "#bcbcbc"]
+let s:palette.gray20 	 = [251, "#c6c6c6"]
+let s:palette.gray21 	 = [252, "#d0d0d0"]
+let s:palette.gray22 	 = [253, "#dadada"]
+let s:palette.gray23 	 = [254, "#e4e4e4"]
+let s:palette.white  	 = [255, "#eeeeee"]
 
-let s:palette.blue   = [33 , "#0087ff"]
-let s:palette.green  = [42 , "#00d787"]
-let s:palette.red    = [124, "#af0000"]
-let s:palette.purple = [129, "#af00ff"]
-let s:palette.brown  = [130, "#af5f00"]
-let s:palette.orange = [166, "#d75f00"]
-let s:palette.yellow = [228, "#ffff87"]
+let s:palette.cyan 		 = [6  , "#008080"]
+let s:palette.darkblue 	 = [18 , "#000087"]
+let s:palette.darkgreen  = [22 , "#005f00"]
+let s:palette.blue   	 = [33 , "#0087ff"]
+let s:palette.green  	 = [42 , "#00d787"]
+let s:palette.darkred 	 = [52 , "#5f0000"]
+let s:palette.darkpurple = [53 , "#5f005f"]
+let s:palette.darkyellow = [58 , "#5f5f00"]
+let s:palette.red      	 = [124, "#af0000"]
+let s:palette.purple 	 = [129, "#af00ff"]
+let s:palette.brown 	 = [130, "#af5f00"]
+let s:palette.orange 	 = [166, "#d75f00"]
+let s:palette.pink 		 = [200, "#ff00d7"]
+let s:palette.yellow	 = [228, "#ffff87"]
 
 
 " Utilities -------------------------------------------------------------- {{{1
@@ -201,3 +208,27 @@ hi def link diffRemoved          DiffDelete
 " Filetype Specific ------------------------------------------------------ {{{1
 
 " TODO
+
+
+" Plugin Specific -------------------------------------------------------- {{{1
+
+" RAINBOW PARENTHESIS
+
+let g:rbpt_colorpairs = [
+			\ s:palette.brown,
+			\ s:palette.gray11,
+			\ s:palette.purple,
+			\ s:palette.green,
+			\ s:palette.white,
+			\ s:palette.blue,
+			\ s:palette.yellow,
+			\ s:palette.red,
+			\ s:palette.brown,
+			\ s:palette.gray13,
+			\ s:palette.cyan,
+			\ s:palette.darkpurple,
+			\ s:palette.darkgreen,
+			\ s:palette.darkblue,
+			\ s:palette.darkyellow,
+			\ s:palette.darkred
+			\ ]
