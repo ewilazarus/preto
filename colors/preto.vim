@@ -1,11 +1,11 @@
 " vim:fdm=marker:foldlevel=0
-"  ____           _        
-" |  _ \ _ __ ___| |_ ___  
-" | |_) | '__/ _ \ __/ _ \ 
+"  ____           _
+" |  _ \ _ __ ___| |_ ___
+" | |_) | '__/ _ \ __/ _ \
 " |  __/| | |  __/ || (_) |
-" |_|   |_|  \___|\__\___/ 
-"                          
-" A minimal dark theme for VIM 
+" |_|   |_|  \___|\__\___/
+"
+" A minimal dark theme for VIM
 
 " Reset -------------------------------------------------------------------{{{1
 
@@ -94,9 +94,9 @@ call s:HL('String'		  , s:palette.gray12, s:palette.black , 'none'	   )
 call s:HL('SpecialChar'	  , s:palette.white , s:palette.black , 'none'	   )
 
 " COMMENTS
-call s:HL('Comment'		  , s:palette.gray05, s:palette.black , 'none'	   )
-call s:HL('SpecialComment', s:palette.gray09, s:palette.black , 'none'	   )
-call s:HL('Title'		  , s:palette.gray09, s:palette.black , 'none'	   )
+call s:HL('Comment'		  , s:palette.gray05, s:palette.black , 'bold'	   )
+call s:HL('SpecialComment', s:palette.gray09, s:palette.black , 'bold'	   )
+call s:HL('Title'		  , s:palette.gray09, s:palette.black , 'bold'	   )
 call s:HL('Todo'		  , s:palette.purple, s:palette.black , 'bold'	   )
 
 " LINES, COLUMNS
@@ -160,11 +160,13 @@ call s:HL('Exception'	  , s:palette.white	, s:palette.black , 'bold'	   )
 call s:HL('Normal'		  , s:palette.gray19, s:palette.black , 'none'	   )
 call s:HL('Cursor'		  , s:palette.white , s:palette.black , 'none'	   )
 call s:HL('Underlined'	  , s:palette.gray12, s:palette.black , 'underline')
-call s:HL('SpecialKey'	  , s:palette.yellow, s:palette.black , 'none'	   )
+call s:HL('SpecialKey'	  , s:palette.white	, s:palette.black , 'bold'	   )
+call s:HL('NonText'		  , s:palette.white , s:palette.black , 'bold'	   )
+call s:HL('Directory'  	  , s:palette.orange, s:palette.black , 'none'	   )
 
 " FOLD
-call s:HL('FoldColumn'	  , s:palette.gray05, s:palette.black , 'none'	   )
-call s:HL('Folded'		  , s:palette.gray05, s:palette.black , 'none'	   )
+call s:HL('FoldColumn'	  , s:palette.gray06, s:palette.black , 'bold'	   )
+call s:HL('Folded'		  , s:palette.gray06, s:palette.black , 'bold'	   )
 
 " PARENTHESIS
 call s:HL('MatchParen'	  , s:palette.orange, s:palette.black , 'bold'	   )
@@ -181,8 +183,6 @@ call s:HL('VertSplit'	  , s:palette.gray19, s:palette.black , 'none'	   )
 " OTHERS
 call s:HL('Debug'		  , s:palette.white	, s:palette.black , 'none'	   )
 call s:HL('Delimiter'  	  , s:palette.white	, s:palette.black , 'none'	   )
-call s:HL('Directory'  	  , s:palette.white	, s:palette.black , 'none'	   )
-call s:HL('NonText'		  , s:palette.white	, s:palette.black , 'none'	   )
 call s:HL('Question'   	  , s:palette.white	, s:palette.black , 'none'	   )
 call s:HL('Special'		  , s:palette.white	, s:palette.black , 'none'	   )
 call s:HL('StatusLine' 	  , s:palette.white	, s:palette.black , 'none'	   )
@@ -194,15 +194,12 @@ call s:HL('WildMenu'   	  , s:palette.white	, s:palette.black , 'none'	   )
 call s:HL('DiffAdd'		  , s:palette.white , s:palette.green , 'none'	   )
 call s:HL('DiffChange'	  , s:palette.white , s:palette.blue  , 'none'	   )
 call s:HL('DiffDelete'	  , s:palette.white , s:palette.red   , 'none'	   )
-call s:HL('DiffText'	  , s:palette.gray09, s:palette.black , 'none'	   )
+call s:HL('DiffText'	  , s:palette.black , s:palette.yellow, 'none'	   )
 
 
 " Links ------------------------------------------------------------------ {{{1
 
-hi def link diffAdded            DiffAdd
-hi def link diffChanged          DiffChange
-hi def link diffCommon           Statement
-hi def link diffRemoved          DiffDelete
+" TODO
 
 
 " Filetype Specific ------------------------------------------------------ {{{1
