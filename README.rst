@@ -1,5 +1,3 @@
-Preto
-======
 
 .. image:: images/exterminadorfuturo.jpg
 
