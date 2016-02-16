@@ -65,7 +65,14 @@ let s:palette.yellow	 = [228, "#ffff87"]
 
 " Utilities -------------------------------------------------------------- {{{1
 
-function! s:HL(item, fgColor, bgColor, style)
+function! s:HL(item, fgColor, bgColor, style, ...)
+	let undesiable_runtimes = a:000
+	for runtime in undesiable_runtimes
+		if has(runtime)
+			return	
+		end
+	endfor
+
 	let target = 'cterm'
 	let pindex = 0
 	if has('gui_running')
@@ -158,7 +165,7 @@ call s:HL('Exception'	  , s:palette.white	, s:palette.black , 'bold'	   )
 
 " MISC
 call s:HL('Normal'		  , s:palette.gray19, s:palette.black , 'none'	   )
-call s:HL('Cursor'		  , s:palette.white , s:palette.black , 'none'	   )
+call s:HL('Cursor'		  , s:palette.white , s:palette.black , 'none'	   , 'gui_macvim')
 call s:HL('Underlined'	  , s:palette.gray12, s:palette.black , 'underline')
 call s:HL('SpecialKey'	  , s:palette.white	, s:palette.black , 'bold'	   )
 call s:HL('NonText'		  , s:palette.white , s:palette.black , 'bold'	   )
@@ -185,8 +192,8 @@ call s:HL('Debug'		  , s:palette.white	, s:palette.black , 'none'	   )
 call s:HL('Delimiter'  	  , s:palette.white	, s:palette.black , 'none'	   )
 call s:HL('Question'   	  , s:palette.white	, s:palette.black , 'none'	   )
 call s:HL('Special'		  , s:palette.white	, s:palette.black , 'none'	   )
-call s:HL('StatusLine' 	  , s:palette.white	, s:palette.black , 'none'	   )
-call s:HL('StatusLineNC'  , s:palette.white	, s:palette.black , 'none'	   )
+call s:HL('StatusLine' 	  , s:palette.white	, s:palette.black , 'none'	   , 'gui_macvim')
+call s:HL('StatusLineNC'  , s:palette.white	, s:palette.black , 'none'	   , 'gui_macvim')
 call s:HL('Tag'			  , s:palette.white	, s:palette.black , 'none'	   )
 call s:HL('WildMenu'   	  , s:palette.white	, s:palette.black , 'none'	   )
 
