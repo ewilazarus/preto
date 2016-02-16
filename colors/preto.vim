@@ -66,8 +66,8 @@ let s:palette.yellow	 = [228, "#ffff87"]
 " Utilities -------------------------------------------------------------- {{{1
 
 function! s:HL(item, fgColor, bgColor, style, ...)
-	let undesiable_runtimes = a:000
-	for runtime in undesiable_runtimes
+	let undesirable_runtimes = a:000
+	for runtime in undesirable_runtimes
 		if has(runtime)
 			return	
 		end
