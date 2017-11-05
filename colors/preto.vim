@@ -75,7 +75,7 @@ function! s:HL(item, fgColor, bgColor, style, ...)
 
 	let target = 'cterm'
 	let pindex = 0
-	if has('gui_running')
+	if has('gui_running') || has('nvim')
 		let target = 'gui'
 		let pindex = 1
 	end
